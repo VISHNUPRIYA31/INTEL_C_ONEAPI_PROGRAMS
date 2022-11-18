@@ -1,0 +1,400 @@
+================================================================
+Day1 -
+Task1- open Github repository link
+https://github.com/YogeshRaje/INTEL_FICE_KPR
+
+===========================================================
+
+Task2- Register and LogIn on Intel Devlcloud oneAPI
+
+step1)- open url  https://devcloud.intel.com/oneapi/ 
+and create account on Intel Devlcoud oneAPI by clicking link  Register now for Intel Devcloud 
+
+step3) Sign In with your credentials and Click on Get started tab  
+Step4) Under  Intel® oneAPI Base Toolkit , click on View Training Modules Button
+step5) Under Module 0 ,Introduction to JupyterLab* and Notebooks ; click on link  TryIn JupyterLab ; It will open Intel's Jupyter lab 
+step6) It will open under folder file Introduction_to_Jupyter.ipynb under with oneAPI_Essentials/00_Introduction_to_Jupyter/Introduction_to_Jupyter.ipynb 
+step7) To get updated files from Intel ; Run the last code cell of jupyter notebook Introduction_to_Jupyter.ipynb
+!/data/oneapi_workshop/get_jupyter_notebooks.sh
+
+step7)Invoke Intel compiler on Devcloud 
+While running On Devcloud change command in file 
+oneAPI_Essentials/01_oneAPI_Intro/run_simple.sh
+from 
+dpcpp lab/simple.cpp
+to
+dpcpp lab/helloworld.c
+
+and in lab folder add file helloworld.c 
+oneAPI_Essentials/01_oneAPI_Intro/lab/helloworld.c
+
+================
+++++++++++++++++++++++++++++++
+Task - execute c program on IntelDevcloud's Terminal 
+step1) LogiIn and Click on + symbol and Terminal 
+step2) Intinitalize and Invoke Intel optimized complier using follwoing command 
+>source /opt/intel/inteloneapi/setvars.sh
+
+step3) create helloworld.c program using nano editor
+>nano helloworld.c
+
+step4)compile and execute program 
+>dpcpp welcome.c -o intelwelcomedemo.out
+>./intelwelcomedemo.out
+
+
+step5) diaplay how much time is taken by above program 
+add time code into the helloword.c and run the code with above steps 
+
+code for hellowordwithtme.c
+
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+// printf() displays the string inside quotation
+	double time_spent = 0.0;
+ 
+	clock_t begin = clock();
+ 	printf("Hello, World!");
+ 	clock_t end = clock();
+	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+   	printf("The elapsed time is %f seconds", time_spent);
+   	return 0;
+}
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Day2
+Task1 - Install and Invoke Intel optimzed complier on windows O.S.
+
+Prerequisite-
+-On Windoows OS ,  Microsoft Visual Studio 2022 community Edition is to be installed (For Linux OS this prequisite is not appilcable)
+
+A)Download link for Intel c c++ compiler 
+https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#dpcpp-cpp
+
+
+B)To run file using intel optimized complier 
+Step1 ) Intilaize the Intel Complier 
+a)Open command prompt 
+>cmd 
+>Cd C:\Program Files (x86)\Intel\oneAPI
+> setvars.bat
+
+b) To run c or cpp code on intel optimized complier 
+>cd C:\Users\user\Desktop\kpriet
+>dpcpp helloworld.c
+>icx helloworld.c
+>helloworld
+
+======================================================================================
+Task2- Run c program on Ubuntu Linux O.S.
+-Run program On Ubuntu Linux 
+step1- open newterminal and write program using nano editor 
+>nano welcome.c
+write code 
+
+Step2 - Save program and retrun back to terminal
+-save ctrl+X 
+-Press Y and Enter Key
+
+Step3-complie and execute program uisng gcc compiler 
+>gcc welcome.c
+
+-If gcc is not installed then Install gcc 
+>sudo get install gcc 
+
+-compile c program using gcc compiler 
+>gcc welcome.c   # It will create a.out file 
+check file a.out 
+>dir 
+
+-run the program 
+>./a.out # It shows output 
+
+****Another way to run c proram using gcc******
+To run file with our own outpout file
+>gcc filename.c -o filename.out 
+>gcc welcome.c -o wel.out
+>dir 
+>./wel.out
+
+=========================================================================================
+Task3 - Install Intel's Compiler on Ubuntu Linux O.S.
+
+step1)- download comlpiler .sh file
+https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#dpcpp-cpp
+step2)change mode of file 
+-open new terminal in Downloads
+>chmod +777 l_dpcpp-cpp-compiler_p_2022.2.1.16991_offline.sh
+Run .sh file 
+>sh l_dpcpp-cpp-compiler_p_2022.2.1.16991_offline.sh
+
+-Intsaller will open and install intel complier 
+
+-After installation it is saved at location 
+/home/yogesh/intel/oneapi
+https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-dpcpp-compiler/top/get-started-on-linux.html
+
+-open terminal in home
+>cd intel/oneapi
+-initialize Intel complier 
+>source setvars.sh intel64 
+
+-after initializing Intel compiler go to directory where c or c++ program (welcome.c) is saved
+>cd /home/yogesh
+
+-run program with intel complier 
+>icx welcome.c -o intelwelcomedemo.out
+>./intelwelcomedemo.out
+
+==============================================================================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Day3
+
+Task 1- Download and install Dev-C++ Software for excuting programs of c and c++ on Windows O.S 
+https://sourceforge.net/projects/orwelldevcpp/
+
+Open Terminal 
+
+>clinfo –l 
+To get access of GPU
+>qsub -I -l nodes=1:gpu:ppn=2 
+>clinfo –l 
+>exit
+>qstat
+================
+
+Day 4 
+-SYCL programming structure 
+-device selection
+-device info
+-Run all the programs of c and c++
+
++++++++++++++++++++++++++++++++
+Day5 -
+Task1-Run the program on Intel Devcloud 
+1)Open Intel Devcloud OneAPI with your LogIn Credentials
+2)Open Terminal on Intel Devcloud
+3)Create new Folder named kprday51 under oneAPI_Essentials folder
+$cd oneAPI_Essentials/
+$mkdir kprday51
+3a) go to the kprday5 directory 
+$cd oneAPI_Essentials//kprday51/
+3b)Invoke dpcpp compiler 
+$ source /opt/intel/inteloneapi/setvars.sh
+4)Upload your program helloworldwithtime.c into the folder named kprday51
+
+5)Run your program eg helloworldwithtime.c using command
+ >dpcpp helloworldwithtime.c -o helloworld.out
+ $./helloworld.out 
+
+
+6)create build.sh
+$nano build.sh
+
+7)save following code into build.sh and return to terminal 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+make clean
+make all
+
+8)create run.sh
+$nano run.sh 
+ 
+9) Save  following code into run.sh and return to terminal 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+dpcpp helloworldwithtime.c -o hello.out
+./hello.out
+make run
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+10) Build and Run the Sample in Batch Mode
+The following describes the process of submitting build and run jobs to PBS.
+
+A job is a script that is submitted to PBS through the qsub utility. By default, the qsub utility does not inherit the current environment variables or your current working directory. For this reason, it is necessary to submit jobs as scripts that handle the setup of the environment variables. In order to address the working directory issue, you can either use absolute paths or pass the -d <dir> option to qsub to set the working directory.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Build and Run
+Jobs submitted in batch mode are placed in a queue waiting for the necessary resources (compute nodes) to become available. The jobs will be executed on a first come basis on the first available node(s) having the requested property or label.
+
+Build the sample on a GPU node using following command in terminal 
+
+$ qsub -l nodes=1:gpu:ppn=2 -d . build.sh
+
+Notes -l nodes=1:gpu:ppn=2 (lower case L) is used to assign one full GPU node to the job.
+The -d . is used to configure the current folder as the working directory for the task.
+
+
+
+11)In batch mode, the commands return immediately; however, the job itself may take longer to complete. In order to inspect the job progress, use the qstat utility.
+$ watch -n 1 qstat -n -1
+
+to retrun back to command prompt press ctrl+c 
+
+Note: The watch -n 1 command is used to run qstat -n -1 and display its results every second.
+
+It will create follwoing two files 
+build.sh.e2044874   //(for your program numbers are differnt) // This is erroer file 
+build.sh.o2044874   // (for your program numbers are differnt) //This is output file 
+
+
+12) Run the sample on a GPU node after the build job completes successfully.
+$ qsub -l nodes=1:gpu:ppn=2 -d . run.sh
+
+The best way to determine whether a job completed or not is by using the qstat utility. When a job terminates, a couple of files are written to the disk:
+<script_name>.sh.eXXXX, which is the job stderr
+<script_name>.sh.oXXXX, which is the job stdout
+Here XXXX is the job ID, which gets printed to the screen after each qsub command.
+run.sh.e2044879  // error file 
+run.sh.o2044879 // output file 
+
+
+
+13) Inspect the output of the sample.
+$ cat run.sh.o2044879
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 3- Run program on FPGA 
+You can compile or run oneAPI designs on the FPGA platform using the Intel DevCloud, which is set up with an Intel® Programmable Acceleration Card with Intel® Arria® 10 GX FPGA and the necessary software stack.
+
+Above program helloworldwithtime.c can be compiled to target the FPGA Emulator or the FPGA Hardware.
+
+FPGA Emulator
+
+1) Create the build_fpga_emu.sh and run_fpga_emu.sh scripts for targeting the emulator.
+1a) create build_fpga_emu.sh
+$ nano build_fpga_emu.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+make fpga_emu -f Makefile.fpga
+
+1b)create  run_fpga_emu.sh
+$ nano run_fpga_emu.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+dpcpp helloworldwithtime.c -o hello.out
+./hello.out
+make fpga_emu -f Makefile.fpga
+
+
+2)Submit the compilation job.
+Note: Compile jobs should be submitted to compute nodes labeled fpga_compile, which are dedicated to FPGA compile jobs.
+$ qsub -l nodes=1:fpga_compile:ppn=2 -d . build_fpga_emu.sh
+
+It will create two files 
+build_fpga_emu.sh.e2044890
+build_fpga_emu.sh.o2044890
+
+3) Submit the execution job.
+Note: Execution should be performed on nodes labeled fpga_compile which have more compute resources available for intensive workloads.
+
+$ qsub -l nodes=1:fpga_compile:ppn=2 -d . run_fpga_emu.sh
+
+
+It will create two files 
+run_fpga_emu.sh.e2044894
+run_fpga_emu.sh.o2044894
+
+
+
+4) Inspect the output of the sample.
+$ cat run_fpga_emu.sh.o2044894
+
+
+Task 5 -Run program on FPGA Hardware 
+1.Create the build_fpga_hw.sh and run_fpga_hw.sh scripts for targeting the FPGA hardware.
+1a)build_fpga_hw.sh
+$nano build_fpga_hw.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+make hw -f Makefile.fpga
+
+
+1b) run_fpga_hw.sh
+$ nano run_fpga_hw.sh
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+dpcpp helloworldwithtime.c -o hello.out
+./hello.out
+make run_hw -f Makefile.fpga
+
+
+2) Submit the compilation job.
+Note: A hardware compile job can take a long time. You can increase the timeout of a batch job by using the -l walltime=hh:mm:ss option. The maximum timeout available for FPGA compile jobs is 24h.
+
+$qsub -l nodes=1:fpga_compile:ppn=2 -d . build_fpga_hw.sh 
+
+It will create two files
+build_fpga_hw.sh.e2044902
+build_fpga_hw.sh.o2044902
+
+3) Submit the execution job.
+Note: Execution should be performed on compute nodes labeled fpga_runtime:<fpga type> (where <fpga type> can be arria10 or stratix10, and must match the device type you targeted when compiling your executable), which host FPGA cards.
+
+$ qsub -l nodes=1:fpga_runtime:arria10:ppn=2 -d . run_fpga_hw.sh
+
+It will cretae two files
+run_fpga_hw.sh.e2044908
+run_fpga_hw.sh.o2044908
+
+4) Inspect the output of the sample.
+$ cat run_fpga_hw.sh.o2044908
+
+It provides follwoing resource : arria10
+Resources: neednodes=1:fpga_runtime:arria10:ppn=2,nodes=1:fpga_runtime:arria10:ppn=2,walltime=06:00:00
+or 
+
+
+5) run job for stratix10 fpga
+$ qsub -l nodes=1:fpga_runtime:stratix10:ppn=2 -d . run_fpga_hw.sh
+It will create two files 
+run_fpga_hw.sh.e2044917
+run_fpga_hw.sh.o2044917
+
+6)Inspect the output of the sample.
+$ cat run_fpga_hw.sh.o2044917
+
+It will shpw you the fpga stratix10
+#Resources:neednodes=1:fpga_runtime:stratix10:ppn=2,nodes=1:fpga_runtime:stratix10:ppn=2,walltime=06:00:00
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+Task6)-Intel Advisor -offload advisor
+open terminal on Intel Devcloud  and execute follwoing commands
+1)$ mkdir day5
+2)$ cd day5
+3)$ git clone https://github.com/oneapi-src/oneAPI-samples.git
+4)$ cd oneAPI-samples/Tools/Advisor/matrix_multiply_advisor/
+
+5)$ cmake .
+6)$ make
+7)$ advixe-python $APM/collect.py advisor_project --config gen9 -- ./matrix.dpcpp
+8)$ advixe-python $APM/analyze.py advisor_project --config gen9 --out-dir ./analyze
+
+day5/oneAPI-samples/Tools/Advisor/matrix_multiply_advisor/analyze/report.html
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
